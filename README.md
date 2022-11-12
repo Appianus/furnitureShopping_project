@@ -47,7 +47,15 @@
 
    - 모달창을 보다 구분 짓기 위해서 뒤에 검은 바탕을 부여해주기 위해서 모달창은 div 2개의 구획이 필요함.
 
-   > ex)`javascript <div class="blackBg><div class="whiteBg"></div></div>`와 같이 보다 편한 구분을 위한 검은바탕으로 들어갈 div와 모달창역활의 하얀바탕의 div가 필요함.
+   > ex)
+
+   ```javascript
+   <div class="blackBg>
+   <div class="whiteBg"></div>
+   </div>
+   ```
+
+   와 같이 보다 편한 구분을 위한 검은바탕으로 들어갈 div와 모달창역활의 하얀바탕의 div가 필요함.
 
    - 모달창을 띄울 때에는 혹시 모를 뒷배경의 스크롤을 막기 위한 처리 필요
 
