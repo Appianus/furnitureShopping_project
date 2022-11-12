@@ -5,26 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/29944629c4.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <!--topBar-->
+    <!--header-->
     <header>
-      <h1>집꾸미기</h1>
-      <nav>
-        <li>Home</li>
-        <li>스토어</li>
-        <li>시공견적</li>
+      <h1 id="logo"><a href="#">집꾸미기</a></h1>
+      <nav id="topMenu">
+        <ul>
+          <li><a href="#">홈</a></li>
+          <li><a href="#">스토어</a></li>
+          <li><a href="#">시공견적</a></li>
+        </ul>
       </nav>
     </header>
-    <!--//topBar-->
+    <!--//header-->
     <!--contents-->
-    <section id="shopping">
-      <input type="text" required placeholder="검색어입력" />
+    <section id="shopping" class="topSpacing20">
+      <div class="search">
+        <input type="search" required placeholder="검색어입력" />
+      </div>
       <article id="products"></article>
     </section>
     <!--//contents-->
     <!--shopping basket-->
-    <section id="buyTab">
+    <section id="buyTab" class="topSpacing20">
       <article id="basket">
         <h3>장바구니</h3>
         <div id="dragInteract">
@@ -38,23 +47,36 @@
       </article>
     </section>
     <!--//shopping basket-->
-    <!--userData send-->
-    <aside id="userData" class="modal hideen">
-      <form>
-        <h3>성함</h3>
-        <input type="text" required />
-        <h3>연락처</h3>
-        <input type="text" required />
-        <br />
-        <button type="submit">입력완료</button>
-        <button type="button">닫기</button>
-      </form>
+    <!--Modal userData send-->
+    <aside class="blackBg hidden">
+      <div id="userData" class="modal">
+        <form>
+          <h3 class="left"><i class="fa-solid fa-user"></i>성함</h3>
+          <input type="text" required />
+          <h3 class="left"><i class="fa-regular fa-address-book"></i>연락처</h3>
+          <input type="text" required />
+          <br />
+          <div class="left">
+            <button class="left marginLeft3 blackButton" type="submit">
+              입력완료
+            </button>
+            <button class="left blackButton" type="button">닫기</button>
+          </div>
+        </form>
+      </div>
     </aside>
     <!--//userData send-->
-    <!--receipt-->
-    <aside id="receipt" class="modal hideen">
-      <canvas id="canvas" width="350px" height="350"></canvas>
-      <button type="button">닫기</button>
+    <!--Modal receipt-->
+    <aside class="blackBg hidden">
+      <div id="receipt" class="modal">
+        <div class="modalTop">
+          <i class="fa-regular fa-circle-xmark right verticalCenter"></i>
+        </div>
+        <canvas id="canvas" width="350px" height="350"></canvas>
+        <div class="modalBottom">
+          <button type="button" class="right verticalCenter">닫기</button>
+        </div>
+      </div>
     </aside>
     <!--//receipt-->
   </body>
