@@ -49,18 +49,52 @@
 
    > ex)
 
-   ```javascript
+   ```html
    <div class="blackBg>
    <div class="whiteBg"></div>
    </div>
    ```
 
-   와 같이 보다 편한 구분을 위한 검은바탕으로 들어갈 div와 모달창역활의 하얀바탕의 div가 필요함.
+   ```css
+   .blackBg {
+     width: 100%;
+     height: 100%;
+     position: fixed;
+     top: 0;
+     left: 0;
+     background: rgba(0, 0, 0, 0.5);
+     z-index: 50;
+   }
+   .whiteBg {
+     position: fixed;
+     top: 50%;
+     left: 50%;
 
-   - 모달창을 띄울 때에는 혹시 모를 뒷배경의 스크롤을 막기 위한 처리 필요
+     width: auto;
+     height: auto;
+
+     transform: translate(-50%, -50%);
+
+     padding: 20px;
+     box-sizing: border-box;
+     text-align: center;
+
+     background-color: #fff;
+     border-radius: 10px;
+     box-shadow: 0 2px 3px rgba(34, 34, 34, 0.15);
+   }
+   ```
+
+와 같이 보다 편한 구분을 위한 검은바탕으로 들어갈 div와 모달창역활의 하얀바탕의 div가 필요함.
+
+- 모달창을 띄울 때에는 혹시 모를 뒷배경의 스크롤을 막기 위한 처리 필요
 
 ---
 
 ## 확신 할 수 있는 점
 
 **예전에 배웠고 이번 프로젝트에서자연스럽게 할 수 있었던 점.**
+
+```
+
+```
