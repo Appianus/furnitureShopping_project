@@ -1,6 +1,6 @@
 const store = document.querySelector("#store");
 
-data = {
+const data = {
   products: [
     {
       id: 0,
@@ -31,8 +31,7 @@ data = {
       price: 40000,
     },
   ],
-}; //업데이트 전 테스트용 임시 오브젝트
-
+};
 // fetch("http://appian.dothome.co.kr/json/store.json")
 //   .then((response) => response.json())
 //   .then((data) => console.log(data))
@@ -62,11 +61,14 @@ function paintProduct(product) {
   brand.classList.add("searchData");
   brand.innerText = product.brand;
   //브랜드명 자동입력
+  const priceText = document.createElement("p");
+  priceText.innerText = "가격 : ";
   const price = document.createElement("p");
-  price.innerText = `가격 : ${product.price}`;
+  price.innerText = product.price;
   //가격 자동 입력
   title.classList.add("textLeft");
   brand.classList.add("textLeft");
+  priceText.classList.add("textLeft", "combinePrice");
   price.classList.add("textLeft");
   const button = document.createElement("button");
   button.classList.add("blackButton", "marginLeft0");
@@ -74,6 +76,7 @@ function paintProduct(product) {
   //버튼 제작
   textDiv.appendChild(title);
   textDiv.appendChild(brand);
+  textDiv.appendChild(priceText);
   textDiv.appendChild(price);
   textDiv.appendChild(button);
   //카드 하단부 텍스트 부분 결합
@@ -85,8 +88,10 @@ function paintProduct(product) {
   store.appendChild(cardDiv);
   //전체 카드를 html에 구현.
 }
+//나중에 createElement / classList / innerText / appendChild 등으로 덕지덕지 붙힌게. 효율적일지? 그냥 innerHTML 등으로 한 문장으로 만드는게 더 깔끔한 코드일지 고민.
 
 if (data !== null) {
   data.products.forEach(paintProduct);
 }
 //data가 비어있지 않으면 상품 구현.
+// export { data };
