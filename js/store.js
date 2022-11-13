@@ -31,7 +31,8 @@ data = {
       price: 40000,
     },
   ],
-};
+}; //업데이트 전 테스트용 임시 오브젝트
+
 // fetch("http://appian.dothome.co.kr/json/store.json")
 //   .then((response) => response.json())
 //   .then((data) => console.log(data))
