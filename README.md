@@ -37,6 +37,38 @@
 1. 마크다운 작성법
    외부에 공개해보는 첫 작품으로써 어떻게 README를 작성해야하는 가.와 관련하여 마크다운 문법을 새로 배우고 테스트 해봄.
 
+2. json파일을 서버에서 받아오기.(Ajax)
+   node.js 강의로 받은 자료를 저장하고, 그 자료를 지정해 받아오는건 배웠는데.
+   순수 자바로만, 그리고 JSON파일 받아오는건 처음 배웠음.
+
+   ```javascript
+   $.get("url") //jQuery식 요청.
+     .done((data) => {
+       //done = 요청이 끝났을 시 특정행동
+       console.log(data); //받아온 데이터 콘솔창에 출력
+     })
+     .fail(() => {
+       //fail = 요청을 실패했을 시 특정행동
+       console.log("데이터 요청 실패."); //데이터 요청 실패시 출력.
+     });
+
+   //↓기본 javascript식 요청
+   fetch("http://appian.dothome.co.kr/json/store.json")
+     .then((response) => response.json()) //jQuery는 JSON자료를 자동으로 array/object 자료로 바꿔줘서 생략되는 문구. 유사한 것으로는 노마드 코더에서 들었던 JSON.parse()의 역활.
+     //일반 API 요청에는 .json()을 뺀 response만.
+     .then((data) => console.log(data))
+     .catch((error) => console.log("에러 발생 :", error));
+   ```
+
+3. javaScript로 속성(setAttribute) 부여.
+   속성을 자바스크립트로 부여하는것은 처음 찾아봄.
+
+   ```javascript
+   Element.setAttribute(name, value); //속성을 업데이트 혹은 새로 부여.
+   //.getAttribute는 속성 확인.
+   //.removeAttribute는 속성 제거.
+   ```
+
 ---
 
 ## 아직 더 보완해야 할 점
@@ -50,8 +82,8 @@
    > ex)
 
    ```html
-   <div class="blackBg>
-   <div class="whiteBg"></div>
+   <div class="blackBg">
+     <div class="whiteBg"></div>
    </div>
    ```
 
@@ -85,16 +117,6 @@
    }
    ```
 
-와 같이 보다 편한 구분을 위한 검은바탕으로 들어갈 div와 모달창역활의 하얀바탕의 div가 필요함.
+   와 같이 보다 편한 구분을 위한 검은바탕으로 들어갈 div와 모달창역활의 하얀바탕의 div가 필요함.
 
-- 모달창을 띄울 때에는 혹시 모를 뒷배경의 스크롤을 막기 위한 처리 필요
-
----
-
-## 확신 할 수 있는 점
-
-**예전에 배웠고 이번 프로젝트에서자연스럽게 할 수 있었던 점.**
-
-```
-
-```
+   - 모달창을 띄울 때에는 혹시 모를 뒷배경의 스크롤을 막기 위한 처리 필요

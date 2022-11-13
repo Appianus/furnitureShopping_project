@@ -10,6 +10,7 @@
       src="https://kit.fontawesome.com/29944629c4.js"
       crossorigin="anonymous"
     ></script>
+    <script src="js/store.js" defer></script>
   </head>
   <body>
     <!--header-->
@@ -29,7 +30,17 @@
       <div class="search">
         <input type="search" required placeholder="검색어입력" />
       </div>
-      <article id="products"></article>
+      <article id="store" class="topSpacing10">
+        <!-- <div class="card" draggable="true">
+          <div class="card_img"><img src="img/product/pr1.JPG" alt="" /></div>
+          <div class="text">
+            <h4 class="searchData">식기세척기</h4>
+            <span class="searchData">세척나라</span>
+            <p>가격 : 10000</p>
+            <button type="button" class="blackButton marginLeft0">담기</button> -->
+          </div>
+        </div>
+      </article>
     </section>
     <!--//contents-->
     <!--shopping basket-->
@@ -41,7 +52,7 @@
         </div>
       </article>
       <article id="payment">
-        <h3>최종가격</h3>
+        <h4>최종가격</h4>
         <p id="sumPrice">합계</p>
         <button type="submit">구매하기</button>
       </article>
