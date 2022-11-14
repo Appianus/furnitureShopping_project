@@ -1,20 +1,55 @@
 const cards = document.querySelectorAll(".card");
 const basket = document.querySelector("#dragInteract");
 
+const overlapCheck = [];
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(event) {
+  event.dataTransfer.setData("text", this.id);
+}
+
+function drop(event) {
+  event.preventDefault();
+  let goodsId = event.dataTransfer.getData("text");
+  document.querySelector("#dragInteract .center").classList.add("hidden"); //원래 있던 안내 지우기.
+  if (overlapCheck.includes(goodsId) === false) {
+    //
+    const originalNod = document.getElementById(goodsId);
+    const copyNode = originalNod.cloneNode(true);
+    copyNode.id = "copy" + goodsId;
+    basket.appendChild(copyNode);
+    //클론노드 코드.
+    overlapCheck.push(goodsId);
+    //goodsId를 넣어서 중복체크와 나중에 영수증에서 구매하는 품목 체크.
+    buttonToInput(copyNode.id);
+  }
+}
+
+function buttonToInput(evnet) {
+  const change = document.querySelector(`#${evnet} .text`);
+  const button = document.querySelector(`#${evnet} button`);
+  button.classList.add("hidden");
+  const input = document.createElement("input");
+  input.setAttribute("type", "number");
+  input.setAttribute("min", 1);
+  input.setAttribute("required", "");
+  input.setAttribute("value", 1);
+  change.appendChild(input);
+}
+
+basket.addEventListener("dragover", allowDrop);
+basket.addEventListener("drop", drop);
 cards.forEach((item) => {
-  item.addEventListener("dragstart", (event) => console.log(event));
+  item.addEventListener("dragstart", drag);
 });
+
 //img는 자체적으로 draggable인데. img를 draggable 막는게 더 효율적.
 // 하지만 일부러 코딩 실력을 위해서, if문으로 img의 값이 잡혔을 때, card div가 잡혔을 때. 두 가지 경우를 구분해서 만들어보자.
 
 //해야하는 것.
-// 1.드래그 이벤트 시작시(dragstart)에 상품에 대한 데이터를 별도로 저장하기.
-// 1-1)target이 img일때 각 위치 및 수치 찾기.
-// 1-2)target이 .card 일때 각 위치 및 수치 찾기
-
-// 2.drop으로 장바구니 란에 넣었을 때 별도 저장한 데이터를 가져와서. 그 안에 다시 제품 품목으로 구현하기.
-
-// 3. 2의 drop이벤트 이후, 담기 버튼은 사라지고, 안에 대신 input 태그를 구현하며 제품의 갯수를 입력할 수 있도록 만들기.
 
 // 4. 2번 drop이벤트로 한번 더 같은 데이터를 끌어올 시에 input 태그 안에 수치를 +1 시키기
 

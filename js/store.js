@@ -40,6 +40,7 @@ const data = {
 function paintProduct(product) {
   //스토어에 제품 카드 구현
   const cardDiv = document.createElement("div");
+  cardDiv.id = product.id;
   cardDiv.classList.add("card");
   cardDiv.setAttribute("draggable", "true");
   //큰 카드 만들기.
