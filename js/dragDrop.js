@@ -1,5 +1,5 @@
 const cards = document.querySelectorAll(".card");
-const basket = document.querySelector("#dragInteract");
+const shoppingBasket = document.querySelector("#dragInteract");
 
 const overlapCheck = [];
 
@@ -16,32 +16,37 @@ function drop(event) {
   let goodsId = event.dataTransfer.getData("text");
   document.querySelector("#dragInteract .center").classList.add("hidden"); //원래 있던 안내 지우기.
   if (overlapCheck.includes(goodsId) === false) {
-    //
+    //includes로 ID를 이용해 중복체크 구간에 같은 품목이 있는가 체크.
     const originalNod = document.getElementById(goodsId);
     const copyNode = originalNod.cloneNode(true);
-    copyNode.id = "copy" + goodsId;
-    basket.appendChild(copyNode);
-    //클론노드 코드.
+    copyNode.id = `copy${goodsId}`;
+    shoppingBasket.appendChild(copyNode);
+    //cloneNode로 복사한 것을 만들고, 새롭게 id를 부여해서 이동시킴.
     overlapCheck.push(goodsId);
     //goodsId를 넣어서 중복체크와 나중에 영수증에서 구매하는 품목 체크.
     buttonToInput(copyNode.id);
+  } else if (overlapCheck.includes(goodsId) === true) {
+    const nodeInput = document.querySelector(`#copy${goodsId}input`);
+    const goodsAmount = Number(nodeInput.value);
+    nodeInput.value = goodsAmount + 1;
   }
 }
 
-function buttonToInput(evnet) {
-  const change = document.querySelector(`#${evnet} .text`);
-  const button = document.querySelector(`#${evnet} button`);
+function buttonToInput(event) {
+  const change = document.querySelector(`#${event} .text`);
+  const button = document.querySelector(`#${event} button`);
   button.classList.add("hidden");
   const input = document.createElement("input");
   input.setAttribute("type", "number");
   input.setAttribute("min", 1);
   input.setAttribute("required", "");
   input.setAttribute("value", 1);
+  input.id = `${event}input`;
   change.appendChild(input);
 }
 
-basket.addEventListener("dragover", allowDrop);
-basket.addEventListener("drop", drop);
+shoppingBasket.addEventListener("dragover", allowDrop);
+shoppingBasket.addEventListener("drop", drop);
 cards.forEach((item) => {
   item.addEventListener("dragstart", drag);
 });
@@ -50,8 +55,6 @@ cards.forEach((item) => {
 // 하지만 일부러 코딩 실력을 위해서, if문으로 img의 값이 잡혔을 때, card div가 잡혔을 때. 두 가지 경우를 구분해서 만들어보자.
 
 //해야하는 것.
-
-// 4. 2번 drop이벤트로 한번 더 같은 데이터를 끌어올 시에 input 태그 안에 수치를 +1 시키기
 
 // 5. drop존의 각 제품의 input값(갯수)과 가격을 다 합산하여 최종 가격에 합계를 띄우기.
 
