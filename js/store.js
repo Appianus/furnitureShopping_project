@@ -14,6 +14,10 @@ fetch("https://appianus.github.io/furnitureShopping_project/json/store.json")
     cards.forEach((item) => {
       item.addEventListener("dragstart", drag);
     });
+    const putButton = document.querySelectorAll(".putToBasket");
+    putButton.forEach((item) => {
+      item.addEventListener("click", clickPutBascket);
+    });
   })
   .catch((error) => console.log("에러 발생 : ", error));
 
@@ -52,7 +56,7 @@ function paintProduct(product) {
   priceText.classList.add("textLeft", "combinePrice");
   price.classList.add("textLeft");
   const button = document.createElement("button");
-  button.classList.add("blackButton", "marginLeft0");
+  button.classList.add("blackButton", "marginLeft0", "putToBasket");
   button.innerText = "담기";
   //버튼 제작
   textDiv.appendChild(title);
@@ -68,5 +72,10 @@ function paintProduct(product) {
 
   store.appendChild(cardDiv);
   //전체 카드를 html에 구현.
+}
+
+function clickPutBascket(card) {
+  const goodsId = card.composedPath()[2].id;
+  productToBasket(goodsId);
 }
 //나중에 createElement / classList / innerText / appendChild 등으로 덕지덕지 붙힌게. 효율적일지? 그냥 innerHTML 등으로 한 문장으로 만드는게 더 깔끔한 코드일지 고민.

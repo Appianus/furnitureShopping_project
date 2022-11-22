@@ -244,3 +244,8 @@ header a {
     width: 750px;
   }
 }
+
+#canvas {
+  height: 100%;
+  max-height: 650px;
+}
