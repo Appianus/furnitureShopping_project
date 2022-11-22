@@ -1,41 +1,21 @@
 const store = document.querySelector("#store");
 
-const data = {
-  products: [
-    {
-      id: 0,
-      title: "식기세척기",
-      brand: "세척나라",
-      photo: "pr1.jpg",
-      price: 10000,
-    },
-    {
-      id: 1,
-      title: "원목 침대 프레임",
-      brand: "침대나라",
-      photo: "pr2.jpg",
-      price: 20000,
-    },
-    {
-      id: 2,
-      title: "천연 디퓨저 세트",
-      brand: "향기나라",
-      photo: "pr3.jpg",
-      price: 30000,
-    },
-    {
-      id: 3,
-      title: "시원한 서큘레이터",
-      brand: "바람나라",
-      photo: "pr4.jpg",
-      price: 40000,
-    },
-  ],
-};
-// fetch("http://appian.dothome.co.kr/json/store.json")
-//   .then((response) => response.json())
-//   .then((data) => console.log(data))
-//   .catch((error) => console.log("에러 발생 : ", error));
+let product = {};
+
+fetch("https://appianus.github.io/furnitureShopping_project/json/store.json")
+  .then((response) => response.json())
+  .then((data) => {
+    product = data;
+    if (product !== null) {
+      product.products.forEach(paintProduct);
+    }
+    // 데이터를 받아서 카드를 만든 이후에 cards를 만들어야하기 때문에 하단 위치. fetch는 비동기 처리이기 때문.
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((item) => {
+      item.addEventListener("dragstart", drag);
+    });
+  })
+  .catch((error) => console.log("에러 발생 : ", error));
 
 function paintProduct(product) {
   //스토어에 제품 카드 구현
@@ -90,9 +70,3 @@ function paintProduct(product) {
   //전체 카드를 html에 구현.
 }
 //나중에 createElement / classList / innerText / appendChild 등으로 덕지덕지 붙힌게. 효율적일지? 그냥 innerHTML 등으로 한 문장으로 만드는게 더 깔끔한 코드일지 고민.
-
-if (data !== null) {
-  data.products.forEach(paintProduct);
-}
-//data가 비어있지 않으면 상품 구현.
-// export { data };
