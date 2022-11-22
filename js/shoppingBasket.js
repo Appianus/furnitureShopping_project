@@ -22,6 +22,7 @@ function productToBasket(goodsId) {
     nodeInput.value = goodsAmount + 1;
   }
   renewalCards();
+  canvas();
 }
 
 function renewalCards() {

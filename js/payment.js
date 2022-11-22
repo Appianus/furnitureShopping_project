@@ -28,10 +28,14 @@ function backToMain() {
 function canvas() {
   const canvas = document.getElementById("canvas");
   const can = canvas.getContext("2d");
-  can.font = "20px dotum";
+  can.clearRect(0, 0, canvas.width, canvas.height);
   let canvasLeft = 20;
   let canvasTop = 30;
 
+  let fontMargin = 16;
+  canvas.height = 350 + fontMargin * (overlapCheck.length * 3);
+
+  can.font = "20px dotum";
   can.fillText("영수증", canvasLeft, canvasTop);
   canvasTop += 20;
 
@@ -40,27 +44,29 @@ function canvas() {
   canvasTop += 48;
 
   can.font = "14px dotum";
-  let fontMargin = 16;
   function goods(goodsId) {
     const title = product.products[goodsId].title;
-    can.fillText(title, canvasLeft, canvasTop);
-    canvasTop += fontMargin;
-
     const brand = product.products[goodsId].brand;
-    can.fillText(brand, canvasLeft, canvasTop);
-    canvasTop += fontMargin;
-
     const price = product.products[goodsId].price;
-    can.fillText(`가격 : ${price}`, canvasLeft, canvasTop);
-    canvasTop += fontMargin;
-
     const amount = document.querySelector(`#${COPYSTR}${goodsId}${INPUTSTR}`);
-    can.fillText(`수량 : ${amount.value}`, canvasLeft, canvasTop);
-    canvasTop += fontMargin;
-
     const totalSum = Number(price) * Number(amount.value);
-    can.fillText(`합계 : ${totalSum}`, canvasLeft, canvasTop);
-    canvasTop += fontMargin * 2;
+    if (Number(amount.value) === 0) {
+    } else if (Number(amount.value) !== 0) {
+      can.fillText(title, canvasLeft, canvasTop);
+      canvasTop += fontMargin;
+
+      can.fillText(brand, canvasLeft, canvasTop);
+      canvasTop += fontMargin;
+
+      can.fillText(`가격 : ${price}`, canvasLeft, canvasTop);
+      canvasTop += fontMargin;
+
+      can.fillText(`수량 : ${amount.value}`, canvasLeft, canvasTop);
+      canvasTop += fontMargin;
+
+      can.fillText(`합계 : ${totalSum}`, canvasLeft, canvasTop);
+      canvasTop += fontMargin * 2;
+    }
   }
   overlapCheck.forEach(goods);
 
