@@ -20,4 +20,4 @@ function renewalCards() {
 }
 
 shoppingBasket.addEventListener("drop", renewalCards);
-shoppingBasket.addEventListener("drop", sumPrice);
+shoppingBasket.addEventListener("change", renewalCards);
