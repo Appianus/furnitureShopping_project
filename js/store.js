@@ -75,7 +75,7 @@ function paintProduct(product) {
 }
 
 function clickPutBascket(card) {
-  const goodsId = card.path[2].id;
+  const goodsId = card.composedPath()[2].id;
   productToBasket(goodsId);
 }
 //나중에 createElement / classList / innerText / appendChild 등으로 덕지덕지 붙힌게. 효율적일지? 그냥 innerHTML 등으로 한 문장으로 만드는게 더 깔끔한 코드일지 고민.

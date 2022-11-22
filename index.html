@@ -13,6 +13,7 @@
     <script src="js/store.js" defer></script>
     <script src="js/dragDrop.js" defer></script>
     <script src="js/shoppingBasket.js" defer></script>
+    <script src="js/payment.js" defer></script>
   </head>
   <body>
     <!--header-->
@@ -51,33 +52,39 @@
     </section>
     <!--//shopping basket-->
     <!--Modal userData send-->
-    <aside class="blackBg hidden">
+    <aside id="inputUserData" class="blackBg hidden">
       <div id="userData" class="modal">
         <form>
           <h3 class="left"><i class="fa-solid fa-user"></i>성함</h3>
           <input type="text" required />
           <h3 class="left"><i class="fa-regular fa-address-book"></i>연락처</h3>
-          <input type="text" required />
+          <input type="tel" required placeholder="-를 제외한 전화번호 입력" />
           <br />
           <div class="left">
-            <button class="left marginLeft3 blackButton" type="submit">
+            <button
+              id="inputFinish"
+              class="left marginLeft3 blackButton"
+              type="submit"
+            >
               입력완료
             </button>
-            <button class="left blackButton" type="button">닫기</button>
+            <button id="leave" class="left blackButton close" type="button">
+              닫기
+            </button>
           </div>
         </form>
       </div>
     </aside>
     <!--//userData send-->
     <!--Modal receipt-->
-    <aside class="blackBg hidden">
+    <aside id="receiptModal" class="blackBg hidden">
       <div id="receipt" class="modal">
         <div class="modalTop">
-          <i class="fa-regular fa-circle-xmark right verticalCenter"></i>
+          <i class="fa-regular fa-circle-xmark right verticalCenter close"></i>
         </div>
-        <canvas id="canvas" width="350px" height="350"></canvas>
+        <canvas id="canvas" width="350px" height="650"></canvas>
         <div class="modalBottom">
-          <button type="button" class="right verticalCenter">닫기</button>
+          <button type="button" class="right verticalCenter close">닫기</button>
         </div>
       </div>
     </aside>

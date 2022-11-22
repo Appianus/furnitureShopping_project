@@ -1,5 +1,6 @@
 const buyButton = document.querySelector("#payment button");
 let totalSumPrice = document.querySelector("#sumPrice");
+let sumGoodsPrice;
 
 function productToBasket(goodsId) {
   document.querySelector("#dragInteract .center").classList.add("hidden"); //원래 있던 안내 지우기.
@@ -25,7 +26,7 @@ function productToBasket(goodsId) {
 
 function renewalCards() {
   const basketCards = document.querySelectorAll("#dragInteract .card");
-  let sumGoodsPrice = 0;
+  sumGoodsPrice = 0;
   function sumPrice(event) {
     const idNumSplit = event.id.split("_");
     const idNumber = Number(idNumSplit[1]);
@@ -41,5 +42,11 @@ function renewalCards() {
   basketCards.forEach(sumPrice);
 }
 
+function buyToPay() {
+  const inputUserData = document.querySelector("#inputUserData");
+  inputUserData.classList.remove("hidden");
+}
+
 shoppingBasket.addEventListener("drop", renewalCards);
 shoppingBasket.addEventListener("change", renewalCards);
+buyButton.addEventListener("click", buyToPay);
