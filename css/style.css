@@ -231,7 +231,7 @@ header a {
 
 /* #dragInteract > .card {
 } */
-@media (max-width: 835px) {
+@media screen and (max-width: 833px) {
   #store {
     width: 750px;
   }
@@ -242,6 +242,32 @@ header a {
 
   #dragInteract {
     width: 750px;
+  }
+}
+@media screen and (max-width: 768px) {
+  header {
+    font-size: 12px;
+  }
+
+  #store {
+    width: 100%;
+  }
+  .card {
+    width: 45%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .card:nth-child(2n + 1) {
+    margin-left: 0;
+  }
+  #dragInteract {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  header {
+    font-size: 10px;
   }
 }
 
